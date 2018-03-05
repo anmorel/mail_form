@@ -1,0 +1,53 @@
+<?php
+
+/**
+* Implementation of hook_install().
+*/
+function mail_form_install() {
+die('toto');
+  // Use schema API to create database table.
+  drupal_install_schema('mail_form');
+}
+
+
+
+/**
+* Implementation of hook_uninstall().
+*/
+function mail_form_uninstall() {
+  // Remove tables.
+  drupal_uninstall_schema('mail_form');
+}
+
+
+
+/**
+* Implementation of hook_schema().
+*/
+function mail_form_schema() {
+  $schema['mail_form_list'] = array(
+    'description' => t('Stores email list of the social_site module.'),
+    'fields' => array(
+      'tid' => array(
+        'description' => 'The primary identifier for a type.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE),
+      'email' => array(
+        'description' => 'email',
+        'type' => 'varchar',
+        'length' => 60,
+        'not null' => TRUE),
+      'date' => array(
+        'description' => 'date',
+        'type' => 'int',
+        'mail_form' => TRUE,
+        'not null' => TRUE,
+        'default' => ''),
+    ),
+    'primary key' => array('tid'),
+  );
+
+  return $schema;
+}
+

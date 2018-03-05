@@ -1,0 +1,5 @@
+name = Mail Form
+description = Description 
+core = 7.x
+
+configure = admin/config/content/mail_form
